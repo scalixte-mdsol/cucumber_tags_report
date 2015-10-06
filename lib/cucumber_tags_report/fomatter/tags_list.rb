@@ -2,7 +2,7 @@ require 'multi_json'
 require 'base64'
 require 'cucumber/formatter/io'
 require 'cucumber/formatter/console'
-require 'cucumber/formatter/hook_query_visitor'
+# require 'cucumber/formatter/hook_query_visitor'
 
 module CucumberTagsReport
   module Formatter
