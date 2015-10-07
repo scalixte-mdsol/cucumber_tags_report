@@ -2,7 +2,6 @@ require 'multi_json'
 require 'base64'
 require 'cucumber/formatter/io'
 require 'cucumber/formatter/console'
-# require 'cucumber/formatter/hook_query_visitor'
 
 module CucumberTagsReport
   module Formatter
@@ -18,12 +17,11 @@ module CucumberTagsReport
         @all_tags = []
       end
 
-      def tag_name(tag_name, all_tags = [])
+      def tag_name(tag_name)
         @all_tags << tag_name
       end
 
       def after_features(features)
-        # create_csv_report(@all_tags.inject(Hash.new(0)) { |hash, value| hash[value] += 1; hash })
         @all_tags.uniq.sort.each { |tag| @io.puts tag }
       end
 
