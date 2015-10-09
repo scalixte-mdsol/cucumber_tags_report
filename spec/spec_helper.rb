@@ -3,17 +3,15 @@ $:.unshift(File.dirname(__FILE__))
 
 # For Travis....
 require 'cucumber/encoding'
-
 require 'simplecov_setup'
-
 require 'pry'
-
 require 'cucumber'
 
 RSpec.configure do |c|
   c.before do
     ::Cucumber::Term::ANSIColor.coloring = true
   end
+  c.mock_with :rspec
 end
 
 module RSpec
