@@ -1,1 +1,1 @@
-ENV['RUBY_VERSION'] || '2.0.0'
+ruby ENV['RUBY_VERSION'] || '2.0.0'
