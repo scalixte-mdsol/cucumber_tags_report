@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
-require "cucumber_tags_report"
+require 'cucumber_tags_report/version'
+
 Gem::Specification.new do |s|
   s.name      = 'cucumber_tags_report'
   s.version   = CucumberTagsReport::Version::VERSION
