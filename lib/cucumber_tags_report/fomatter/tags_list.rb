@@ -13,7 +13,7 @@ module CucumberTagsReport
       def initialize(runtime, path_or_io, options)
         @runtime = runtime
         @options = options
-        @io = ensure_io(path_or_io, "list_scenario_tags")
+        @io = ensure_io(path_or_io)
         @all_tags = []
       end
 
