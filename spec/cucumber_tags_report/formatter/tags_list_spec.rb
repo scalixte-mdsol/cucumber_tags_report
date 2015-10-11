@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'cucumber_tags_report/formatter/spec_helper'
-require 'cucumber_tags_report/fomatter/tags_list'
+require 'cucumber_tags_report/formatter/tags_list'
 require 'nokogiri'
 require 'rspec/mocks'
 require 'cucumber/rb_support/rb_language'
