@@ -1,5 +1,6 @@
 module CucumberTagsReport
   module Formatter
+
     module SpecHelperDsl
       attr_reader :feature_content, :step_defs, :feature_filename
 
@@ -13,47 +14,31 @@ module CucumberTagsReport
       end
     end
 
-    require 'cucumber/core'
     module SpecHelper
-      include Cucumber::Core
-
       def run_defined_feature
         define_steps
-        runtime.visitor = report
-
-        receiver = Test::Runner.new(report)
-        filters = [
-            Cucumber::Filters::ActivateSteps.new(runtime.support_code),
-            Cucumber::Filters::ApplyAfterStepHooks.new(runtime.support_code),
-            Cucumber::Filters::ApplyBeforeHooks.new(runtime.support_code),
-            Cucumber::Filters::ApplyAfterHooks.new(runtime.support_code),
-            Cucumber::Filters::ApplyAroundHooks.new(runtime.support_code),
-            Cucumber::Filters::PrepareWorld.new(runtime)
-        ]
-        compile [gherkin_doc], receiver, filters
-      end
-
-      require 'cucumber/formatter/legacy_api/adapter'
-      def report
-        @report ||= Cucumber::Formatter::LegacyApi::Adapter.new(
-            Cucumber::Formatter::Fanout.new([@formatter]),
-            runtime.results,
-            runtime.support_code,
-            runtime.configuration)
-      end
-
-      require 'cucumber/core/gherkin/document'
-      def gherkin_doc
-        Cucumber::Core::Gherkin::Document.new(self.class.feature_filename, gherkin)
-      end
-
-      def gherkin
-        self.class.feature_content || raise("No feature content defined!")
+        features = load_features(self.class.feature_content || raise("No feature content defined!"))
+        run(features)
       end
 
       require 'cucumber/runtime'
       def runtime
         @runtime ||= Cucumber::Runtime.new
+      end
+
+      def load_features(content)
+        feature_file = Cucumber::FeatureFile.new(self.class.feature_filename, content)
+        features = Cucumber::Ast::Features.new
+        filters = []
+        feature = feature_file.parse(filters, {})
+        features.add_feature(feature) if feature
+        features
+      end
+
+      def run(features)
+        configuration = Cucumber::Configuration.default
+        tree_walker = Cucumber::Ast::TreeWalker.new(runtime, [@formatter], configuration)
+        tree_walker.visit_features(features)
       end
 
       def define_steps

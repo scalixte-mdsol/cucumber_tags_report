@@ -3,6 +3,7 @@ require 'cucumber_tags_report/formatter/spec_helper'
 require 'cucumber_tags_report/fomatter/tags_list'
 require 'nokogiri'
 require 'rspec/mocks'
+require 'cucumber/rb_support/rb_language'
 
 module CucumberTagsReport
   module Formatter
@@ -13,6 +14,7 @@ module CucumberTagsReport
       before(:each) do
         @out = StringIO.new
         @formatter = TagsList.new(runtime, @out, {})
+        runtime.visitor = @formatter
       end
       describe 'Given a single scenario in the feature file' do
 

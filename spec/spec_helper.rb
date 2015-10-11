@@ -2,8 +2,8 @@ ENV['CUCUMBER_COLORS'] = nil
 $:.unshift(File.dirname(__FILE__))
 
 # For Travis....
-require 'cucumber/encoding'
-require 'simplecov_setup'
+# require 'cucumber/encoding'
+# require 'simplecov_setup'
 require 'pry'
 require 'cucumber'
 
