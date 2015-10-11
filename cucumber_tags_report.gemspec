@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name      = 'cucumber_tags_report'
   s.version   = CucumberTagsReport::Version::VERSION
   s.authors     = ["Stanley Calixte"]
-  s.description = 'Behaviour Driven Development with elegance and joy'
+  s.description = 'Formatter Extension for cucumber designed to display tags information'
   s.summary     = "cucumber-#{s.version}"
   s.email       = 'scalixte@mdsol.com'
   s.license     = 'MIT'
@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version = ">= 2.0.0"
 
+  s.add_dependency 'cucumber', '< 2.0'
   s.add_dependency 'cucumber-core', '~> 1.3.0'
   s.add_dependency 'builder', '>= 2.1.2'
   s.add_dependency 'diff-lcs', '>= 1.1.3'
