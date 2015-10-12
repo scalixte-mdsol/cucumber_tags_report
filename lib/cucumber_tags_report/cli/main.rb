@@ -1,4 +1,3 @@
-require_relative 'options'
 require_relative 'configuration'
 require 'cucumber/cli/main'
 
