@@ -6,7 +6,7 @@ require 'cucumber/formatter/console'
 module CucumberTagsReport
   module Formatter
     class TagsList
-      attr_reader :all_tags, :path_or_io, :io, :options, :runtime
+      attr_reader :all_tags, :io, :options, :runtime
       include Cucumber::Formatter::Io
       include Cucumber::Formatter::Console
 
@@ -22,6 +22,12 @@ module CucumberTagsReport
       end
 
       def after_features(features)
+        done
+      end
+
+      private
+
+      def done
         @all_tags.uniq.sort.each { |tag| @io.puts tag }
       end
 
