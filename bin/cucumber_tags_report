@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 $:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')
 
-load File.expand_path(File.dirname(__FILE__) + '/../spec/simplecov_setup.rb')
+# load File.expand_path(File.dirname(__FILE__) + '/../spec/simplecov_setup.rb')
 
 require 'cucumber/rspec/disable_option_parser'
 require 'cucumber_tags_report/cli/main'
