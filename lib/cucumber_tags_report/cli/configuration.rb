@@ -1,5 +1,5 @@
 require_relative 'options'
-# require 'cucumber'
+require 'cucumber'
 require 'cucumber/cli/configuration'
 
 module CucumberTagsReport

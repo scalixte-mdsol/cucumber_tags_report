@@ -1,3 +1,4 @@
+require 'cucumber'
 require 'cucumber/cli/options'
 
 module CucumberTagsReport
