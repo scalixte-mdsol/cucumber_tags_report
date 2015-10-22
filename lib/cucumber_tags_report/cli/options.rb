@@ -145,6 +145,7 @@ module CucumberTagsReport
           opts.on("--report_to CSV",
                   "Whether or not to use ANSI color in the output. Cucumber decides",
                   "based on your platform and the output destination if not specified.") do |v|
+            @options[:report] ||= []
             @options[:report] << ['csv', nil]
             @options[:report][-1][1] = v
             @out_stream.puts v
