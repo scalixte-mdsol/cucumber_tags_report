@@ -25,10 +25,10 @@ module CucumberTagsReport
 
       def initialize(out_stream = STDOUT, error_stream = STDERR, options = {})
         super
-        puts "----------------------------->>>>"
-        puts @out_stream
-        puts options
-        puts "<<<<<----------------------------"
+        @out_stream.puts "----------------------------->>>>"
+        # puts @out_stream
+        @out_stream.puts options
+        @out_stream.puts "<<<<<----------------------------"
       end
       def parse!(args)
         super
@@ -43,9 +43,9 @@ module CucumberTagsReport
           end
         end
 
-        puts "-----------------------------------------"
-        puts args
-        puts "-----------------------------------------"
+        @out_stream.puts "-----------------------------------------"
+        @out_stream.puts args
+        @out_stream.puts "-----------------------------------------"
       end
     end
   end
