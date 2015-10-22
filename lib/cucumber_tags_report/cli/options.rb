@@ -25,6 +25,17 @@ module CucumberTagsReport
 
       OPTIONS_WITH_ARGS << ['--report_to']
 
+      def parse!(args)
+        super
+
+        @args.options do |opts|
+          opts.on_tail("--report_to", "You're looking at it.") do
+            # @out_stream.puts opts.help
+            # Kernel.exit(0)
+          end
+
+        end.parse!
+      end
     end
   end
 end

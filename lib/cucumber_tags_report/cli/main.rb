@@ -17,6 +17,16 @@ module CucumberTagsReport
           new(args).execute!
         end
       end
+
+      def configuration
+        return @configuration if @configuration
+
+        @configuration = CucumberTagsReport::Cli::Configuration.new(@out, @err)
+        @configuration.parse!(@args)
+        Cucumber.logger = @configuration.log
+        @configuration
+      end
+
     end
   end
 end
