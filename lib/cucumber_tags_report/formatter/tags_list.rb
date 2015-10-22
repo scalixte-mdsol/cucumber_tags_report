@@ -17,7 +17,7 @@ module CucumberTagsReport
         @all_tags = []
         @io.puts options.instance_variables
         # @io.puts options.args
-        @io.puts options.options
+        @io.puts options[:report]
         # options.args.each {|k,v| @io.puts "#{k} #{v} "}
       end
 
