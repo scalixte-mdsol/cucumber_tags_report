@@ -26,15 +26,21 @@ module CucumberTagsReport
       OPTIONS_WITH_ARGS << ['--report_to']
 
       def parse!(args)
-        super
+        @args = args
 
         @args.options do |opts|
           opts.on_tail("--report_to", "You're looking at it.") do
             # @out_stream.puts opts.help
             # Kernel.exit(0)
           end
+          opts.on("--report_to",
+                  "Whether or not to use ANSI color in the output. Cucumber decides",
+                  "based on your platform and the output destination if not specified.") do |v|
+            @out_stream.puts v
+          end
+        end.parse
 
-        end.parse!
+        super @args
       end
     end
   end
