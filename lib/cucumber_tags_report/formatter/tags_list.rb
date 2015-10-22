@@ -16,7 +16,9 @@ module CucumberTagsReport
         @io = ensure_io(path_or_io, "tags_list")
         @all_tags = []
         @io.puts options.instance_variables
-        options.args.each {|k,v| @io.puts "#{k} #{v} "}
+        @io.puts options.args
+        @io.puts options.options
+        # options.args.each {|k,v| @io.puts "#{k} #{v} "}
       end
 
       def tag_name(tag_name)
