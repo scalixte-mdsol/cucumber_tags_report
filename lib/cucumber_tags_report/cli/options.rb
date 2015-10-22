@@ -43,7 +43,7 @@ module CucumberTagsReport
           end
         end.parse
 
-        super @args
+        super
       end
     end
   end
