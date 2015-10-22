@@ -27,6 +27,9 @@ module CucumberTagsReport
 
       def parse!(args)
         @args = args
+        @expanded_args = @args.dup
+
+        @args.extend(::OptionParser::Arguable)
 
         @args.options do |opts|
           opts.on_tail("--report_to", "You're looking at it.") do
