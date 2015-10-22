@@ -23,6 +23,13 @@ module CucumberTagsReport
               "on Ruby's LOAD_PATH, for example in a Ruby gem."
       ]
 
+      def initialize(out_stream = STDOUT, error_stream = STDERR, options = {})
+        super
+        puts "----------------------------->>>>"
+        puts @out_stream
+        puts options
+        puts "<<<<<----------------------------"
+      end
       def parse!(args)
         super
 
@@ -35,6 +42,10 @@ module CucumberTagsReport
             puts v
           end
         end
+
+        puts "-----------------------------------------"
+        puts args
+        puts "-----------------------------------------"
       end
     end
   end
