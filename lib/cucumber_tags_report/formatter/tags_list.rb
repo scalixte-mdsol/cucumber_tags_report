@@ -15,6 +15,7 @@ module CucumberTagsReport
         @options = options
         @io = ensure_io(path_or_io, "tags_list")
         @all_tags = []
+        @io.puts options
       end
 
       def tag_name(tag_name)
