@@ -23,30 +23,8 @@ module CucumberTagsReport
               "on Ruby's LOAD_PATH, for example in a Ruby gem."
       ]
 
-      def initialize(out_stream = STDOUT, error_stream = STDERR, options = {})
-        super
-        @out_stream.puts "----------------------------->>>>"
-        # puts @out_stream
-        @out_stream.puts options
-        @out_stream.puts "<<<<<----------------------------"
-      end
-      def parse!(args)
-        super
+      OPTIONS_WITH_ARGS << ['--report_to']
 
-        @args.options do |opts|
-          opts.on("-o", "--out [FILE|DIR]",
-                  "Write output to a file/directory instead of STDOUT. This option",
-                  "applies to the previously specified --format, or the",
-                  "default format if no format is specified. Check the specific",
-                  "formatter's docs to see whether to pass a file or a dir.") do |v|
-            puts v
-          end
-        end
-
-        @out_stream.puts "-----------------------------------------"
-        @out_stream.puts args
-        @out_stream.puts "-----------------------------------------"
-      end
     end
   end
 end
