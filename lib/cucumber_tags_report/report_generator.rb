@@ -1,6 +1,8 @@
 require 'multi_json'
 require 'base64'
+require 'csv'
 require 'cucumber/formatter/io'
+
 module CucumberTagsReport
   class ReportGenerator
     attr_reader :file
@@ -12,6 +14,8 @@ module CucumberTagsReport
       puts file_io.respond_to?(:to_s)
       puts file_io.respond_to?(:to_hash)
       puts file_io.class
+      puts file_io.count
+      puts file_io[0]
       puts "------------"
       ensure
       @file = ensure_io('file.csv', "csv_generator")
