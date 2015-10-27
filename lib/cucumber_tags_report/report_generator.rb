@@ -11,7 +11,9 @@ module CucumberTagsReport
       puts file_io.respond_to?(:to_i)
       puts file_io.respond_to?(:to_s)
       puts file_io.respond_to?(:to_hash)
+      puts file_io.class
       puts "------------"
+      ensure
       @file = ensure_io('file.csv', "csv_generator")
     end
 
