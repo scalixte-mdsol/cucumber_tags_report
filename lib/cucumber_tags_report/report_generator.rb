@@ -77,7 +77,6 @@ module CucumberTagsReport
       CSV.open("file.csv", "w") do |csv|
         csv << headers
         report_hash.each do |hash|
-          puts hash
           row = []
           @generator.keys.each do |key|
             case key
@@ -88,11 +87,12 @@ module CucumberTagsReport
               when /Show Tags/
                 @generator[key].each do |k,v|
                   puts v
-                  row.push(hash[:tags].detect{|value| value =~ Regexp.new(v)})
+                  puts hash[:tags]
+                  row.push(hash[:tags].detect{|value| value =~ /#{v}})
                 end
               when /Tags/
                 @generator[key].each do |k,v|
-                  row.push(hash[:tags].any?{|value| value =~ Regexp.new(v)} ? "Yes" : "No")
+                  row.push(hash[:tags].any?{|value| value =~ /#{v} ? "Yes" : "No")
                 end
             end
           end
