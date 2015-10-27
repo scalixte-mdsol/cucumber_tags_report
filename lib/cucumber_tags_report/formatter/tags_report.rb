@@ -2,11 +2,12 @@ require 'multi_json'
 require 'base64'
 require 'cucumber/formatter/io'
 require 'cucumber/formatter/console'
+require_relative '../report_generator'
 
 module CucumberTagsReport
   module Formatter
     class TagsReport
-      attr_reader :scenario_hashes, :scenario_tags, :scenario_hash, :feature_hash, :io, :options, :runtime
+      attr_reader :scenario_hashes, :scenario_tags, :scenario_hash, :feature_hash, :io, :options, :runtime, :report
       include Cucumber::Formatter::Io
       include Cucumber::Formatter::Console
 
@@ -14,6 +15,8 @@ module CucumberTagsReport
         @runtime = runtime
         @options = options
         @io = ensure_io(path_or_io, "tags_report")
+
+        @report = ReportGenerator.new(options[:report]) if options[:report]
 
         @scenario_tags = []
         @scenario_hashes = []
@@ -59,6 +62,7 @@ module CucumberTagsReport
 
       def done
         @io.write(MultiJson.dump(@scenario_hashes, pretty: true))
+        @report.try(:generate_report, scenario_hashes)
       end
 
       def current_feature
