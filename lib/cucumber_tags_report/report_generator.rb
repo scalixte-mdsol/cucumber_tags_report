@@ -42,7 +42,7 @@ module CucumberTagsReport
         if (File.exist?(file='features/support/tags_list_formatter.yml'))
           @generator=YAML.load(File.open(file))
         else
-          @generator=YAML.load(File.open('generators/templates/tags_list_formatter.yml'))
+          @generator=YAML.load(File.open(File.join(__FILE__, 'generators', 'templates', 'tags_list_formatter.yml')))
         end
       rescue
         @generator=nil
