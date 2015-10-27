@@ -87,11 +87,12 @@ module CucumberTagsReport
                 end
               when /Show Tags/
                 @generator[key].each do |k,v|
-                  row.push(hash[:tags].detect{|value| value =~ v})
+                  puts v
+                  row.push(hash[:tags].detect{|value| value =~ Regexp.new(v)})
                 end
               when /Tags/
                 @generator[key].each do |k,v|
-                  row.push(hash[:tags].any?{|value| value =~ v} ? "Yes" : "No")
+                  row.push(hash[:tags].any?{|value| value =~ Regexp.new(v)} ? "Yes" : "No")
                 end
             end
           end
