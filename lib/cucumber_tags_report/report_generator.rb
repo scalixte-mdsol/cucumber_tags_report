@@ -30,7 +30,11 @@ module CucumberTagsReport
       puts dir
       puts @generator
 
-      load_basic_report(report_hash)
+      if @generator
+        load_complete_report(report_hash)
+      else
+        load_basic_report(report_hash)
+      end
 
     end
 
@@ -59,6 +63,38 @@ module CucumberTagsReport
         csv << report_hash.first.keys
         report_hash.each do |hash|
           csv << hash.values
+        end
+      end
+    end
+
+    def load_complete_report(report_hash)
+      headers=[]
+      @generator.keys.each do |key|
+        headers << @generator[key].keys rescue nil
+      end
+      headers.flatten!
+
+      CSV.open("file.csv", "w") do |csv|
+        csv << headers
+        report_hash.each do |hash|
+          row = []
+          @generator.keys.each do |key|
+            case key
+              when /Headers/
+                @generator[key].each do |k,v|
+                  row.push(hash[v])
+                end
+              when /Show Tags/
+                @generator[key].each do |k,v|
+                  row.push(hash['tags'].detect{|value| value =~ v})
+                end
+              when /Tags/
+                @generator[key].each do |k,v|
+                  row.push(hash['tags'].any?{|value| value =~ v} ? "Yes" : "No")
+                end
+            end
+          end
+          csv << row
         end
       end
     end
