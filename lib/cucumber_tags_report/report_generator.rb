@@ -8,9 +8,9 @@ module CucumberTagsReport
 
     def initialize(file_io)
       puts "------------"
-      puts file_io[1]
+      puts file_io['csv']
       puts "------------"
-      @file = ensure_io(file_io[1], "csv_generator")
+      @file = ensure_io(file_io['csv'], "csv_generator")
     end
 
     def generate_report(report_hash)
