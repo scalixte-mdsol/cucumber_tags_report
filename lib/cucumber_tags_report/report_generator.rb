@@ -7,7 +7,10 @@ module CucumberTagsReport
     include Cucumber::Formatter::Io
 
     def initialize(file_io)
-      file = ensure_io(file_io, "csv_generator")
+      puts "------------"
+      puts file_io
+      puts "------------"
+      @file = ensure_io(file_io, "csv_generator")
     end
 
     def generate_report(report_hash)
