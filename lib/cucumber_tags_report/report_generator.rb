@@ -77,6 +77,7 @@ module CucumberTagsReport
       CSV.open("file.csv", "w") do |csv|
         csv << headers
         report_hash.each do |hash|
+          puts hash
           row = []
           @generator.keys.each do |key|
             case key
