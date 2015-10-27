@@ -18,20 +18,17 @@ module CucumberTagsReport
       puts file_io.class
       puts file_io.count
       puts file_io[0]
-      puts file_io.split
+      puts file_io.split[1]
       puts "------------"
       ensure
       # @file = ensure_io('file.csv', "csv_generator")
     end
 
     def generate_report(report_hash)
-      CSV.open("file.csv", "w", headers: hashes.first.keys) do |csv|
-        hashes.each do |h|
-          # csv << h.values
-          csv << report_hash.first.keys
-          report_hash.each do |hash|
-            csv << hash.values
-          end
+      CSV.open("file.csv", "w") do |csv|
+        csv << report_hash.first.keys
+        report_hash.each do |hash|
+          csv << hash.values
         end
       end
       # end
