@@ -148,7 +148,6 @@ module CucumberTagsReport
             @options[:report] ||= []
             @options[:report] << ['csv', nil]
             @options[:report][-1][1] = v
-            @out_stream.puts v
           end
 
           opts.on("-m", "--no-multiline",

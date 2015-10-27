@@ -78,7 +78,8 @@ module CucumberTagsReport
           current = feature.gherkin_statement.to_hash
           @feature_hash = {
               uri: feature.file,
-              id: current['id'],
+              filename: File.basename(feature.file),
+              id: SecureRandom.hex,
               keyword: current['keyword'],
               title: current['name'],
               description: current['description'],
@@ -94,11 +95,13 @@ module CucumberTagsReport
         @scenario_hash ||= {}
         @scenario_hash.merge!({
                                   uri: @feature_hash[:uri],
-                                  id: hash['id'],
+                                  filename: @feature_hash[:filename],
+                                  id: SecureRandom.hex,
                                   keyword: hash['keyword'],
                                   title: hash['name'],
                                   description: hash['description'],
                                   line: hash['line'],
+                                  scenario_line: "Scenario: #{hash['line']}",
                                   tags: (hash['tags'].collect { |tag| tag['name'] } if hash['tags']) || []
                               })
         @scenario_hash[:tags] += @feature_hash[:tags]
