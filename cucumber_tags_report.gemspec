@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gherkin3', '~> 3.1.0'
   s.add_dependency 'multi_json', '>= 1.7.5', '< 2.0'
   s.add_dependency 'multi_test', '>= 0.1.2'
-  s.add_dependency 'railties', ['>= 3', '< 5']  if defined? Rails
+  s.add_dependency 'railties', ['>= 3', '< 5']  #if defined? Rails
 
   s.add_development_dependency 'aruba', '~> 0.6.1'
   s.add_development_dependency 'json', '~> 1.7'
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara', '>= 2.1'
   s.add_development_dependency 'rack-test', '>= 0.6.1'
   s.add_development_dependency 'sinatra', '>= 1.3.2'
-  s.add_development_dependency('rails') if defined? Rails
+  s.add_development_dependency('rails') #if defined? Rails
 
   s.rubygems_version = ">= 1.6.1"
   s.files            = `git ls-files`.split("\n").reject {|path| path =~ /\.gitignore$/ }
