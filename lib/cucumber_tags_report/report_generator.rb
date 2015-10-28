@@ -10,7 +10,7 @@ module CucumberTagsReport
 
     def initialize(file_io)
       # @file = ensure_exists(file_io.split[1])
-      @file=file.csv
+      @file='file.csv'
       load_generator if @file
     end
 
