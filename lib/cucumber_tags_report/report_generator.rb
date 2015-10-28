@@ -9,7 +9,8 @@ module CucumberTagsReport
     include Cucumber::Formatter::Io
 
     def initialize(file_io)
-      @file = ensure_exists(file_io.split[1])
+      # @file = ensure_exists(file_io.split[1])
+      @file=file.csv
       load_generator if @file
     end
 

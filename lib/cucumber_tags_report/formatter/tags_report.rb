@@ -62,7 +62,7 @@ module CucumberTagsReport
 
       def done
         @io.write(MultiJson.dump(@scenario_hashes, pretty: true))
-        @report.try(:generate_report, scenario_hashes)
+        @report.try(:generate_report, scenario_hashes) if @report
       end
 
       def current_feature
