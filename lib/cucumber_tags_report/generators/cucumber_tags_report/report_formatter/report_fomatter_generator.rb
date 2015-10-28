@@ -1,9 +1,9 @@
 require 'rails/generators'
 require 'rails/generators/base'
 
-module Gemini
+module CucumberTagsReport
   module Generators
-    class ReportFomatterGenerator < Rails::Generators::Base
+    class ReportFormatterGenerator < Rails::Generators::Base
 
     end
   end
